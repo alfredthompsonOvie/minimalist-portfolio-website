@@ -1,0 +1,130 @@
+<template>
+	<footer>
+		<section class="footer__contents">
+			<img src="@/assets/images/logo.svg" alt="" class="branding__footer" />
+			<ul class="nav__list">
+				<li>
+					<router-link :to="{ name: 'home' }" class="footerNav__link">Home</router-link>
+				</li>
+				<li>
+					<router-link :to="{ name: 'portfolioView' }" class="footerNav__link">Portfolio</router-link>
+				</li>
+				<li>
+					<router-link :to="{ name: 'contactView' }" class="footerNav__link">Contact Me</router-link>
+				</li>
+			</ul>
+			<ul class="social__list">
+				<li>
+					<router-link :to="{ name: '' }">
+						<img src="@/assets/images/icons/github.svg" alt="" />
+					</router-link>
+				</li>
+				<li>
+					<router-link :to="{ name: '' }">
+						<img src="@/assets/images/icons/twitter.svg" alt="" />
+					</router-link>
+				</li>
+				<li>
+					<router-link :to="{ name: '' }">
+						<img src="@/assets/images/icons/linkedin.svg" alt="" />
+					</router-link>
+				</li>
+			</ul>
+		</section>
+	</footer>
+</template>
+
+<script>
+export default {
+	setup() {
+		return {};
+	},
+};
+</script>
+
+<style lang="scss" scoped>
+footer {
+  background-color: var(--GrayishDarkBlue);
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  grid-template-rows: auto;
+}
+.footer__contents {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 2em 0;
+  text-align: center;
+}
+.footer__contents > * {
+  margin-top: 1.5em;
+}
+.branding__footer, .social__list {
+  filter: invert(1) brightness(2);
+}
+.footerNav__link {
+  color: var(--LightGreyTextField);
+  transition: all .3s ease;
+  padding: .5em 1em;
+  display: inline-block;
+}
+.footerNav__link:hover {
+  color: var(--SlightlyDesaturatedCyan);
+}
+
+.social__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  transition: all .3s ease;
+
+}
+.social__list a {
+  transition: all .3s ease;
+  display: inline-flex;
+  img {
+    image-rendering: crisp-edges;
+    
+    filter: sepia(1);
+  }
+}
+/* github */
+.social__list li:nth-child(1) a:hover {
+  transform: translateY(-2px) scale(1.5);
+}
+/* twitter */
+.social__list li:nth-child(2) a:hover {
+  transform: translateY(-2px) scale(1.3) rotate(-12deg);
+  filter: saturate(99);
+
+}
+/* linkedin */
+.social__list li:nth-child(3) a:hover {
+  transform: translateY(-2px) scale(1.5) rotate(8deg);
+  filter: invert(1) hue-rotate(180deg) contrast(1.4) saturate(9);
+}
+
+@media (min-width: 760px) {
+  .footer__contents {
+  padding: 2em 0;
+  }
+  .footer__contents > * {
+  margin-top: 0;
+  }
+  .footer__contents, .nav__list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5em;
+}
+
+
+.nav__list {
+  gap: 1em;
+}
+.social__list {
+  margin-left: auto;
+}
+}
+
+</style>

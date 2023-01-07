@@ -1,53 +1,55 @@
 <template>
-	<nav>
-		<!-- branding -->
-		<img src="@/assets/images/logo.svg" alt="site logo" />
-		<!-- hamburger menu -->
-		<div class="hamburger" v-if="mobileMenu">
-			<transition name="fade" mode="out-in">
-				<button v-if="!showMenu" @click.prevent="showMenu = !showMenu">
-					<img src="@/assets/images/icons/hamburger.svg" alt="open menu" />
-				</button>
-
-				<button v-else @click.prevent="showMenu = !showMenu">
-					<img src="@/assets/images/icons/close.svg" alt="open menu" />
-				</button>
-			</transition>
-		</div>
-		<!-- mobile nav -->
-		<template v-if="mobileMenu">
-			<Transition
-				:css="false"
-				@before-enter="beforeEnter"
-				@enter="enter"
-				@leave="leave"
-			>
-				<ul class="mobileNav" v-if="showMenu">
-					<li @click.prevent="showMenu = !showMenu">
-						<router-link :to="{ name: 'home' }">Home</router-link>
-					</li>
-					<li @click.prevent="showMenu = !showMenu">
-						<router-link :to="{ name: 'portfolioView' }">Portfolio</router-link>
-					</li>
-					<li @click.prevent="showMenu = !showMenu">
-						<router-link :to="{ name: 'contactView' }">Contact Me</router-link>
-					</li>
-				</ul>
-			</Transition>
-		</template>
-		<!-- desktop nav -->
-		<ul class="mainMenu" v-if="!mobileMenu">
-			<li>
-				<router-link :to="{ name: 'home' }">Home</router-link>
-			</li>
-			<li>
-				<router-link :to="{ name: 'portfolioView' }">Portfolio</router-link>
-			</li>
-			<li>
-				<router-link :to="{ name: 'contactView' }">Contact Me</router-link>
-			</li>
-		</ul>
-	</nav>
+	<header class="grid">
+		<nav class="grid__contents">
+			<!-- branding -->
+			<img src="@/assets/images/logo.svg" alt="site logo" />
+			<!-- hamburger menu -->
+			<div class="hamburger" v-if="mobileMenu">
+				<transition name="fade" mode="out-in">
+					<button v-if="!showMenu" @click.prevent="showMenu = !showMenu">
+						<img src="@/assets/images/icons/hamburger.svg" alt="open menu" />
+					</button>
+	
+					<button v-else @click.prevent="showMenu = !showMenu">
+						<img src="@/assets/images/icons/close.svg" alt="open menu" />
+					</button>
+				</transition>
+			</div>
+			<!-- mobile nav -->
+			<template v-if="mobileMenu">
+				<Transition
+					:css="false"
+					@before-enter="beforeEnter"
+					@enter="enter"
+					@leave="leave"
+				>
+					<ul class="mobileNav" v-if="showMenu">
+						<li @click.prevent="showMenu = !showMenu">
+							<router-link :to="{ name: 'home' }">Home</router-link>
+						</li>
+						<li @click.prevent="showMenu = !showMenu">
+							<router-link :to="{ name: 'portfolioView' }">Portfolio</router-link>
+						</li>
+						<li @click.prevent="showMenu = !showMenu">
+							<router-link :to="{ name: 'contactView' }">Contact Me</router-link>
+						</li>
+					</ul>
+				</Transition>
+			</template>
+			<!-- desktop nav -->
+			<ul class="mainMenu" v-if="!mobileMenu">
+				<li>
+					<router-link :to="{ name: 'home' }">Home</router-link>
+				</li>
+				<li>
+					<router-link :to="{ name: 'portfolioView' }">Portfolio</router-link>
+				</li>
+				<li>
+					<router-link :to="{ name: 'contactView' }">Contact Me</router-link>
+				</li>
+			</ul>
+		</nav>
+	</header>
 </template>
 
 <script>
@@ -167,12 +169,7 @@ nav {
 		padding: .5em 3em;
 	}
 }
-a {
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	line-height: 2.5;
-	font-size: 12px;
-}
+
 .mainMenu {
 	display: flex;
 	gap: 1em;

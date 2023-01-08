@@ -67,6 +67,10 @@
 					<router-link :to="{ name: 'portfolioView' }" class="cta cta__sec">
 						<!-- <span class="cta__content">Go to Portfolio</span> -->
 						Go to Portfolio
+						<div class="border__top"></div>
+						<div class="border__right"></div>
+						<div class="border__bottom"></div>
+						<div class="border__left"></div>
 					</router-link>
 				</div>
 			</div>

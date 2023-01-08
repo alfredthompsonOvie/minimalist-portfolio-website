@@ -145,7 +145,7 @@ nav {
 	justify-content: space-between;
 	position: relative;
 	/* border: 1px solid; */
-	padding: 2em 1em;
+	padding: 2em 0em;
 
 }
 .mobileNav {

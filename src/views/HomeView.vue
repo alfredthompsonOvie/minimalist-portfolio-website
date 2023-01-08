@@ -223,8 +223,8 @@ export default {
 	.about__contents {
 		display: grid;
 		grid-template-columns: 0.8fr 1.2fr;
-		grid-template-rows: 80vh;
-		grid-template-rows: 100vh;
+		/* grid-template-rows: 80vh;
+		grid-template-rows: 100vh; */
 		grid-template-rows: auto;
 		grid-gap: 3em;
 	}

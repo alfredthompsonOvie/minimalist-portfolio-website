@@ -6,17 +6,17 @@
 					<img
 						src="@/assets/images/portfolio/mobile/image-portfolio-manage@2x.jpg"
 						alt=""
-						v-if="mobileNav"
+						v-if="mobile"
 					/>
-					<!-- <img
+					<img
 						src="@/assets/images/portfolio/tablet/image-portfolio-manage@2x.jpg"
 						alt=""
-						v-if="!mobileNav"
-					/> -->
+						v-if="tablet"
+					/>
 					<img
 						src="@/assets/images/portfolio/desktop/image-portfolio-manage@2x.jpg"
 						alt=""
-						v-if="!mobileNav"
+						v-if="desktop"
 					/>
 				</div>
 				<div class="about__content about__details">
@@ -41,18 +41,20 @@
 					<img
 						src="@/assets/images/portfolio/mobile/image-portfolio-bookmark@2x.jpg"
 						alt=""
-						v-if="mobileNav"
-					/>
-					<!-- <img
+						v-if="mobile"
+						/>
+
+					<img
 						src="@/assets/images/portfolio/tablet/image-portfolio-bookmark@2x.jpg"
 						alt=""
-						v-if="!mobileNav"
-					/> -->
-					<img
+						v-if="tablet"
+						/>
+
+						<img
 						src="@/assets/images/portfolio/desktop/image-portfolio-bookmark@2x.jpg"
 						alt=""
-						v-if="!mobileNav"
-					/>
+						v-if="desktop"
+						/>
 				</div>
 				<div class="about__content about__details">
 					<h1 class="subHeading">Bookmark</h1>
@@ -75,17 +77,17 @@
 					<img
 						src="@/assets/images/portfolio/mobile/image-portfolio-insure@2x.jpg"
 						alt=""
-						v-if="mobileNav"
+						v-if="mobile"
 					/>
-					<!-- <img
+					<img
 						src="@/assets/images/portfolio/tablet/image-portfolio-insure@2x.jpg"
 						alt=""
-						v-if="!mobileNav"
-					/> -->
+						v-if="tablet"
+					/>
 					<img
 						src="@/assets/images/portfolio/desktop/image-portfolio-insure@2x.jpg"
 						alt=""
-						v-if="!mobileNav"
+						v-if="desktop"
 					/>
 				</div>
 				<div class="about__content about__details">
@@ -107,19 +109,19 @@
 			<div class="grid__contents about__contents">
 				<div class="about__illustration">
 					<img
-						src="@/assets/images/portfolio/mobile/image-portfolio-insure@2x.jpg"
+						src="@/assets/images/portfolio/mobile/image-portfolio-fylo@2x.jpg"
 						alt=""
-						v-if="mobileNav"
+						v-if="mobile"
 					/>
-					<!-- <img
-						src="@/assets/images/portfolio/tablet/image-portfolio-insure@2x.jpg"
-						alt=""
-						v-if="!mobileNav"
-					/> -->
 					<img
-						src="@/assets/images/portfolio/desktop/image-portfolio-insure@2x.jpg"
+						src="@/assets/images/portfolio/tablet/image-portfolio-fylo@2x.jpg"
 						alt=""
-						v-if="!mobileNav"
+						v-if="tablet"
+					/>
+					<img
+						src="@/assets/images/portfolio/desktop/image-portfolio-fylo@2x.jpg"
+						alt=""
+						v-if="desktop"
 					/>
 				</div>
 				<div class="about__content about__details">
@@ -137,18 +139,151 @@
 				</div>
 			</div>
 		</section>
+
+		<ContactMe />
 	</main>
 </template>
 
 <script>
+import { ref, onMounted } from "vue";
+import ContactMe from "../components/ContactMe.vue";
 export default {
 	name: "portfolioView",
+	components: {
+		ContactMe
+	},
 	setup() {
-		return {};
+		const mobile = ref(null);
+		const tablet = ref(null);
+		const desktop = ref(null);
+		const windowWidth = ref(null);
+
+		const checkScreen = () => {
+			windowWidth.value = window.innerWidth;
+			// mobile
+			if (windowWidth.value < 481) {
+				mobile.value = true;
+				tablet.value = false;
+				desktop.value = false;
+				// mobileMenu.value = true;
+				return;
+			}
+			// tablet
+			if (windowWidth.value < 768) {
+				mobile.value = false;
+				tablet.value = true;
+				desktop.value = false;
+				return;
+			}
+			// desktop
+			mobile.value = false;
+			tablet.value = false;
+			desktop.value = true;
+			return;
+		};
+
+		onMounted(() => {
+			checkScreen();
+			window.addEventListener("resize", checkScreen);
+		});
+
+		return {
+			mobile,
+			tablet,
+			desktop,
+		};
 	},
 };
 </script>
 
 <style lang="scss" scoped>
+.about {
+	/* margin-top: 5em; */
+}
+.about__illustration {
+	text-align: center;
+}
+.about__details {
+	margin-top: 2em;
+	border-top: 1px solid var(--LightGreyTextField);
+	border-bottom: 1px solid var(--LightGreyTextField);
 
+	display: flex;
+	justify-content: space-evenly;
+	flex-direction: column;
+	padding: 1.5em 0;
+}
+.description {
+	padding: 1em 0 1.2em;
+}
+.cta__sec {
+	margin-top: 2em;
+	margin-bottom: 3em;
+	align-self: flex-start;
+}
+
+@media (min-width: 768px) {
+	.about + .about {
+		margin-top: 6em;
+	}
+	.about__contents {
+		/* display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto; */
+		display: flex;
+		flex-direction: row;
+		grid-gap: 3em;
+	}
+	.about:nth-child(even) .about__contents {
+		flex-direction: row-reverse;
+		/* background-color: red; */
+	}
+	.about__illustration {
+		/* grid-column: 1;
+		grid-row: 1; */
+		margin: 0;
+		flex: 1;
+		max-width: 500px;
+		overflow: hidden;
+
+		img {
+			height: 100%;
+			object-fit: contain;
+		}
+	}
+	.about__content {
+		flex: 2;
+		border-top: 1px solid var(--LightGreyTextField);
+		border-bottom: 1px solid var(--LightGreyTextField);
+
+		/* display: flex; */
+		justify-content: center;
+		/* flex-direction: column; */
+	}
+	.about__details {
+		margin-top: 0em;
+		max-width: 330px;
+		font-size: 15px;
+	}
+	.cta__sec {
+		margin-top: 0em;
+		margin-bottom: 1em;
+		align-self: flex-start;
+	}
+	.subHeading {
+		margin: 0;
+	}
+}
+
+@media (min-width: 1200px) {
+	.about + .about {
+		margin-top: 4em;
+	}
+	.about__contents {
+		grid-gap: 6em;
+	}
+	.about__illustration {
+		max-width: 550px;
+	}
+}
 </style>

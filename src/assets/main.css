@@ -22,7 +22,9 @@
 
 	/** colors */
 	/* primary */
-	--GrayishDarkBlue: hsl(245, 11%, 22%);
+	/* --GrayishDarkBlue: hsl(245, 11%, 22%); */
+  --GrayishDarkBlue-border: hsla(245, 10%, 22%, 0.15);
+	--GrayishDarkBlue: hsl(245, 10%, 22%);
 	--DarkBlue: hsl(206, 41%, 21%);
 	--SlightlyDesaturatedCyan: hsl(167, 36%, 54%);
 	/* secondary */

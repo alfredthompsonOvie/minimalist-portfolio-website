@@ -1,54 +1,63 @@
 <template>
   <main>
     <div v-for="project in projects" :key="project.hero.heading">
-      <div class="project__banner">
-          <img
-          :src="`${imgUrl('../../assets/images/detail/desktop/')}${project.hero.banner}`"
-          :alt="`${project.hero.heading} site preview`"
-          >
-      </div>
-      
-      <div class="project__info">
-        <h1 class="subHeading">{{ project.hero.heading }}</h1>
-        <p> {{ project.hero.description }}</p>
-        
-        <p 
-        v-for="category in project.hero.category" 
-        :key="category"
-        class="category"
-        >
-        {{ category }}
-        </p>
-        <router-link 
-        :to="{name: ''}" class="cta cta__sec">
-        {{ project.hero.linkContent }}
-        </router-link>
-      </div>
-
-      <div class="project__background">
-        <h1 class="subHeading">
-          {{ project.background.heading }}
-        </h1>
-        <p>
-          {{ project.background.description }}
-        </p>
-        <h1 class="subHeading"> {{ project.background.subHeading }}</h1>
-
-        <div>
-          <img
-          :src="`${imgUrl('../../assets/images/detail/desktop/')}${project.background.img}`"
-          :alt="`${project.hero.heading} site preview`"
-          >
+      <template v-if="id === project.hero.heading.toLowerCase()">
+        <div class="project__banner">
+            <img
+            :src="`${imgUrl('../../assets/images/detail/desktop/')}${project.hero.heroImage}`"
+            :alt="`${project.hero.heading} site preview`"
+            >
         </div>
-      </div>
-      <div class="control">
-        <button>
-          {{ project.previousProject }}
-        </button>
-        <button>
-          {{ project.nextProject }}
-        </button>
-      </div>
+        
+        <div class="project__info">
+          <h1 class="subHeading">{{ project.hero.heading }}</h1>
+          <p> {{ project.hero.description }}</p>
+          
+          <p 
+          v-for="category in project.hero.category" 
+          :key="category"
+          class="category"
+          >
+          {{ category }}
+          </p>
+          <router-link 
+          :to="{name: ''}" class="cta cta__sec">
+          {{ project.hero.linkContent }}
+          </router-link>
+        </div>
+  
+        <div class="project__background">
+          <h1 class="subHeading">
+            {{ project.background.heading }}
+          </h1>
+          <p>
+            {{ project.background.description }}
+          </p>
+          <h1 class="subHeading"> {{ project.background.subHeading }}</h1>
+  
+          <div>
+            <img
+            :src="`${imgUrl('../../assets/images/detail/desktop/')}${project.background.previewImage_one}`"
+            :alt="`${project.hero.heading} site preview`"
+            >
+            <img
+            :src="`${imgUrl('../../assets/images/detail/desktop/')}${project.background.previewImage_two}`"
+            :alt="`${project.hero.heading} site preview`"
+            >
+          </div>
+        </div>
+        <div class="control">
+          <button>
+            {{ project.previousProject }}
+          </button>
+          <button>
+            <span>
+              {{ project.nextProject }}
+            </span>
+            <span>next</span>
+          </button>
+        </div>
+      </template>
     </div>
   </main>
   <div>
@@ -97,7 +106,7 @@ export default {
     const projects = ref([
       {
         hero: {
-          banner: 'image-manage-hero@2x.jpg',
+          heroImage: 'image-manage-hero@2x.jpg',
 
           heading: "Manage",
           description: "This project required me to build a fully responsive landing page to the designs provided. I used HTML5, along with CSS Grid and JavaScript for the areas that required interactivity, such as the testimonial slider.",
@@ -110,17 +119,8 @@ export default {
           heading: "Project Background",
           description: "This project was a front-end  challenge from Frontend Mentor. It’s a platform that enables you to practice building websites to a design and project brief. Each challenge includes mobile and desktop designs to show how the website should look at different screen sizes. Creating these projects has helped me refine my workflow and solve real-world coding problems. I’ve learned something new with each project, helping me to improve and adapt my style.",
           subHeading: "Static Previews",
-          // img:  {
-          //   mobile: {
-          //     hero: "@/assets/images/detail/tablet/image-manage-hero@2x.jpg",
-          //     preview: "@/assets/images/detail/tablet/image-manage-preview-2@2x.jpg"
-          //   },
-          //   desktop: {
-          //     hero: "@/assets/images/detail/desktop/image-manage-hero@2x.jpg",
-          //     preview: "@/assets/images/detail/desktop/image-manage-preview-2@2x.jpg"
-          //   }
-          // },
-          img: 'image-manage-preview-2@2x.jpg'
+          previewImage_one: 'image-manage-preview-1@2x.jpg',
+          previewImage_two: 'image-manage-preview-2@2x.jpg',
         },
 
         previousProject: "Fylo",
@@ -128,10 +128,7 @@ export default {
       },
       {
         hero: {
-          banner: [
-            "@/assets/images/detail/tablet/image-bookmark-hero@2x.jpg",
-            "@/assets/images/detail/desktop/image-bookmark-hero@2x.jpg"
-          ],
+          heroImage: 'image-bookmark-hero@2x.jpg',
           heading: "Bookmark",
           description: "This project required me to build a fully responsive landing page to the designs provided. I used HTML5, along with CSS Grid and JavaScript for the areas that required interactivity, such as the features section.",
 
@@ -143,28 +140,15 @@ export default {
           heading: "Project Background",
           description: "This project was a front-end  challenge from Frontend Mentor. It’s a platform that enables you to practice building websites to a design and project brief. Each challenge includes mobile and desktop designs to show how the website should look at different screen sizes. Creating these projects has helped me refine my workflow and solve real-world coding problems. I’ve learned something new with each project, helping me to improve and adapt my style.",
           subHeading: "Static Previews",
-          img:  {
-            mobile: {
-              hero: "@/assets/images/detail/tablet/image-bookmark-hero@2x.jpg",
-              preview: "@/assets/images/detail/tablet/image-bookmark-preview-2@2x.jpg"
-            },
-            desktop: {
-              hero: "@/assets/images/detail/desktop/image-bookmark-hero@2x.jpg",
-              preview: "@/assets/images/detail/desktop/image-bookmark-preview-2@2x.jpg"
-            }
-          },
+          previewImage_one: 'image-bookmark-preview-1@2x.jpg',
+          previewImage_two: 'image-bookmark-preview-2@2x.jpg',
         },
-        links: {
-          previous: "Manage",
-          next: "Insure",
-        }
+        previousProject: "Manage",
+        nextProject: "Insure",
       },
       {
         hero: {
-          banner: [
-            "@/assets/images/detail/tablet/image-insure-hero@2x.jpg",
-            "@/assets/images/detail/desktop/image-insure-hero@2x.jpg"
-          ],
+          heroImage: 'image-insure-hero@2x.jpg',
           heading: "Insure",
           description: "This was a small project which mostly consisted of HTML and CSS. I built a fully-responsive landing page. The only JavaScript this project required was to enable the toggling of the mobile navigation.",
 
@@ -176,28 +160,15 @@ export default {
           heading: "Project Background",
           description: "This project was a front-end  challenge from Frontend Mentor. It’s a platform that enables you to practice building websites to a design and project brief. Each challenge includes mobile and desktop designs to show how the website should look at different screen sizes. Creating these projects has helped me refine my workflow and solve real-world coding problems. I’ve learned something new with each project, helping me to improve and adapt my style.",
           subHeading: "Static Previews",
-          img: {
-            mobile: {
-              hero: "@/assets/images/detail/tablet/image-insure-hero@2x.jpg",
-              preview: "@/assets/images/detail/tablet/image-insure-preview-2@2x.jpg"
-            },
-            desktop: {
-              hero: "@/assets/images/detail/desktop/image-insure-hero@2x.jpg",
-              preview: "@/assets/images/detail/desktop/image-insure-preview-2@2x.jpg"
-            }
-          },
+          previewImage_one: 'image-insure-preview-1@2x.jpg',
+          previewImage_two: 'image-insure-preview-2@2x.jpg',
         },
-        links: {
-          previous: "Bookmark",
-          next: "Fylo",
-        }
+        previousProject: "Bookmark",
+        nextProject: "Fylo",
       },
       {
         hero: {
-          banner: [
-            "@/assets/images/detail/tablet/image-fylo-hero@2x.jpg",
-            "@/assets/images/detail/desktop/image-fylo-hero@2x.jpg"
-          ],
+          heroImage: 'image-fylo-hero@2x.jpg',
           heading: "Fylo",
           description: "This project was built in pure HTML and CSS. I had mobile and desktop designs to work to and built it so that it was fully-responsive. I took a mobile-firstapproach and used modern CSS like Flexbox and Grid for layout purposes.",
 
@@ -209,21 +180,11 @@ export default {
           heading: "Project Background",
           description: "This project was a front-end  challenge from Frontend Mentor. It’s a platform that enables you to practice building websites to a design and project brief. Each challenge includes mobile and desktop designs to show how the website should look at different screen sizes. Creating these projects has helped me refine my workflow and solve real-world coding problems. I’ve learned something new with each project, helping me to improve and adapt my style.",
           subHeading: "Static Previews",
-          img: {
-            mobile: {
-              hero: "@/assets/images/detail/tablet/image-fylo-hero@2x.jpg",
-              preview: "@/assets/images/detail/tablet/image-fylo-preview-2@2x.jpg"
-            },
-            desktop: {
-              hero: "@/assets/images/detail/desktop/image-fylo-hero@2x.jpg",
-              preview: "@/assets/images/detail/desktop/image-fylo-preview-2@2x.jpg"
-            }
-          },
+          previewImage_one: 'image-fylo-preview-1@2x.jpg',
+          previewImage_two: 'image-fylo-preview-2@2x.jpg',
         },
-        links: {
-          previous: "Insure",
-          next: "Manage",
-        }
+        previousProject: "Insure",
+        nextProject: "Manage",
       },
     ]);
 

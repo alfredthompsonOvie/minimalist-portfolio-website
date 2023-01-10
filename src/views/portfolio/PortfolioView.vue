@@ -146,7 +146,7 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import ContactMe from "../components/ContactMe.vue";
+import ContactMe from "../../components/ContactMe.vue";
 export default {
 	name: "portfolioView",
 	components: {

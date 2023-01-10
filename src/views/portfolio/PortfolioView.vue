@@ -28,7 +28,7 @@
 						testimonial slider.
 					</p>
 
-					<router-link :to="{ name: 'portfolioView' }" class="cta cta__sec">
+					<router-link :to="{ name: 'projectDetailsView', params: { id: 'manage'} }" class="cta cta__sec">
 						<!-- <span class="cta__content">Go to Portfolio</span> -->
 						View Project
 					</router-link>
@@ -65,7 +65,7 @@
 						features section.
 					</p>
 
-					<router-link :to="{ name: '' }" class="cta cta__sec">
+					<router-link :to="{ name: 'projectDetailsView', params: { id: 'bookmark'} }" class="cta cta__sec">
 						View Project
 					</router-link>
 				</div>
@@ -99,7 +99,7 @@
 						navigation.
 					</p>
 
-					<router-link :to="{ name: '' }" class="cta cta__sec">
+					<router-link :to="{ name: 'projectDetailsView', params: { id: 'insure'} }" class="cta cta__sec">
 						View Project
 					</router-link>
 				</div>
@@ -133,7 +133,7 @@
 						like Flexbox and Grid for layout purposes.
 					</p>
 
-					<router-link :to="{ name: '' }" class="cta cta__sec">
+					<router-link :to="{ name: 'projectDetailsView', params: { id: 'fylo'} }" class="cta cta__sec">
 						View Project
 					</router-link>
 				</div>

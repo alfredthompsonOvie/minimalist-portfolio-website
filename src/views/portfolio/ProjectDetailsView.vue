@@ -35,7 +35,7 @@
                 <h1 class="subHeading">
                   {{ project.background.heading }}
                 </h1>
-                <p>
+                <p class="description">
                   {{ project.background.description }}
                 </p>
                 <h1 class="subHeading">{{ project.background.subHeading }}</h1>
@@ -415,7 +415,7 @@ text-align: left;
     display: grid;
     grid-template-columns: 352px 1fr;
     grid-template-rows: auto;
-    grid-gap: 3em;
+    grid-gap: 6em;
   }
   .project__info {
     display: block;

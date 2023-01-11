@@ -63,16 +63,14 @@
 	}
 }
 
-
 #app {
 	max-width: 1440px;
 	margin: 0 auto;
 	/* padding: 2rem; */
 	font-family: var(--ff-body);
+	background-color: var(--VeryLightGreyBG);
 }
-/* main {
-	padding-inline: 1em;
-} */
+
 
 a {
 	text-decoration: none;

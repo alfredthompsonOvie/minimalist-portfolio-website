@@ -26,14 +26,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.slide-enter-from {
-	/* transform: translateX(-100px); */
+/* .slide-enter-from {
 	left: -100%;
-	/* opacity: 0; */
 }
 .slide-enter-to {
 	left: 0%;
-	/* opacity: 1; */
 }
 .slide-leave-to {
 	transform: scale(0.8);
@@ -46,5 +43,5 @@ export default {
 .slide-leave-active {
 	position: absolute;
 	transition: all 0.85s ease;
-}
+} */
 </style>

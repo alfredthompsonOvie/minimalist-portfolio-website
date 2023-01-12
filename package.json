@@ -9,6 +9,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "gsap": "^3.11.4",
     "vee-validate": "^4.7.3",
     "vue": "^3.2.45",

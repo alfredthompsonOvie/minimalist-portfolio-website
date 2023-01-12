@@ -142,7 +142,8 @@ ul {
 	/* border: 0; */
 	/* color: #fff; */
 }
-.cta__sec::before, .cta__sec::after {
+.cta__sec::before,
+.cta__sec::after {
 	content: "";
 	position: absolute;
 	background-color: var(--GrayishDarkBlue);

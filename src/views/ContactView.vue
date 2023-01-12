@@ -35,11 +35,11 @@
 			</section>
 
 			<section class="contact__section">
-				<form @submit="onSubmit" :errors="errors">
+				<form @submit="onSubmit" :errors="errors" ref="form">
 					<fieldset class="flex">
-            <div class="flex__contents--heading">
-              <legend class="subHeading">Contact Me</legend>
-            </div>
+						<div class="flex__contents--heading">
+							<legend class="subHeading">Contact Me</legend>
+						</div>
 						<div class="form__contents flex__contents--body">
 							<div class="form__group">
 								<label for="name">Name</label>
@@ -99,9 +99,12 @@
 import { useField, useForm } from "vee-validate";
 import { object, string } from "yup";
 
+import emailjs from '@emailjs/browser';
+
 export default {
 	name: "contactView",
 	setup() {
+		// const form = ref(null);
 		const schema = object({
 			name: string().required("This field is required"),
 			email: string().required("This field is required").email(),
@@ -117,7 +120,27 @@ export default {
 		const { value: message } = useField("message");
 
 		const onSubmit = handleSubmit((values) => {
-      console.log(values);
+			console.log(values);
+
+			emailjs.send("service_dy8oq15", "contact_form", values, "LmD4BAQZ0uDvqETKL")
+				.then(
+				function (response) {
+					console.log("SUCCESS!", response.status, response.text);
+				},
+				function (error) {
+					console.log("FAILED...", error);
+				}
+			);
+			// emailjs.send("service_dy8oq15", "template_mtc3grg", values, "LmD4BAQZ0uDvqETKL")
+			// 	.then(
+			// 	function (response) {
+			// 		console.log("SUCCESS!", response.status, response.text);
+			// 	},
+			// 	function (error) {
+			// 		console.log("FAILED...", error);
+			// 	}
+			// );
+
 		});
 
 		return {
@@ -201,7 +224,7 @@ input[type="submit"] {
 	line-height: 14px;
 	letter-spacing: 2px;
 	text-align: center;
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .error {
@@ -217,25 +240,23 @@ input[disabled] {
 	cursor: not-allowed;
 }
 
-
-
 @media (min-width: 992px) {
-  .contact__description {
-	margin: 0;
-	margin-bottom: 1.5em;
-}
-.form__contents {
-  margin-top: 0;
-}
-  .flex {
-    display: flex;
-    align-items: flex-start;
-  }
-  .flex__contents--heading {
-    flex: 1;
-  }
-  .flex__contents--body {
-    flex: 1;
-  }
+	.contact__description {
+		margin: 0;
+		margin-bottom: 1.5em;
+	}
+	.form__contents {
+		margin-top: 0;
+	}
+	.flex {
+		display: flex;
+		align-items: flex-start;
+	}
+	.flex__contents--heading {
+		flex: 1;
+	}
+	.flex__contents--body {
+		flex: 1;
+	}
 }
 </style>

@@ -115,7 +115,6 @@ import { gsap } from "gsap";
 export default {
 	name: "ProjectDetailsView",
 	props: ["id"],
-	// components: { TransitionGroup },
 	setup() {
 		const projects = ref([
 			{
@@ -212,13 +211,15 @@ export default {
 			},
 		]);
 		const imgUrl = (val) => new URL(val, import.meta.url).href;
-		const tab = ref(true);
+		// const tab = ref(true);
 
 		const beforeEnter = (el) => {
 			gsap.set(el, {
 				autoAlpha: 0.01,
 				x: -30,
 			})
+			console.log('before enter');
+
 		}
 
 		const enter = (el, done) => {
@@ -228,28 +229,30 @@ export default {
 				duration: 1,
 				onComplete: done,
 			})
+
+			console.log('enter');
 		}
+
 		return {
 			projects,
 			imgUrl,
-			tab,
+			// tab,
 			beforeEnter,
-			enter
+			enter,
 		};
 	},
 };
 </script>
 
 <style lang="scss" scoped>
-.slide-enter-from,
+/* .slide-enter-from,
 .slide-leave-to {
 	opacity: 0;
-	/* transform: translateX(-100px); */
 }
 .slide-enter-active,
 .slide-leave-active {
 	transition: all 0.3s ease;
-}
+} */
 .project__contents {
 	margin: 3em 0;
 

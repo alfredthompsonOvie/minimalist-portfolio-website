@@ -10,7 +10,7 @@
 					<router-link :to="{ name: 'portfolioView' }" class="footerNav__link">Portfolio</router-link>
 				</li>
 				<li>
-					<router-link :to="{ name: 'contactView' }" class="footerNav__link">Contact Me</router-link>
+					<router-link :to="{ name: 'ContactView' }" class="footerNav__link">Contact Me</router-link>
 				</li>
 			</ul>
 			<ul class="social__list">

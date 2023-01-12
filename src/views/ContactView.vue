@@ -4,7 +4,7 @@
 			<section class="contact__details contact__section flex">
 				<h1 class="subHeading flex__contents--heading">Get in Touch</h1>
 				<div class="contact__contents__container flex__contents--body">
-					<P class="contact__description">
+					<p class="contact__description">
 						I’d love to hear about what you’re working on and how I could help.
 						I’m currently looking for a new role and am open to a wide range of
 						opportunities. My preference would be to find a position in a
@@ -13,7 +13,7 @@
 						person who will always approach each task with a sense of purpose
 						and attention to detail. Please do feel free to check out my online
 						profiles below and get in touch using the form.
-					</P>
+					</p>
 					<ul class="social__list">
 						<li>
 							<router-link :to="{ name: '' }">
@@ -35,23 +35,23 @@
 			</section>
 
 			<section class="contact__section">
-				<form @submit="onSubmit" :errors="errors" ref="form">
+				<form @submit="onSubmit">
 					<fieldset class="flex">
 						<div class="flex__contents--heading">
 							<legend class="subHeading">Contact Me</legend>
 						</div>
 						<div class="form__contents flex__contents--body">
 							<div class="form__group">
-								<label for="name">Name</label>
+								<label for="fullname">Name</label>
 								<input
 									type="text"
-									name="name"
+									name="fullname"
 									placeholder="Jane Appleseed"
-									v-model="name"
+									v-model="fullname"
 									class="form__control"
-									:class="{ addBorder: errors.name }"
+									:class="{ addBorder: errors.fullname }"
 								/>
-								<p v-if="errors" class="error">{{ errors.name }}</p>
+								<p v-if="errors" class="error">{{ errors.fullname }}</p>
 							</div>
 							<div class="form__group">
 								<label for="email">Email Address</label>
@@ -95,18 +95,16 @@
 </template>
 
 <script>
-// import { ref } from "vue";
 import { useField, useForm } from "vee-validate";
 import { object, string } from "yup";
 
 import emailjs from '@emailjs/browser';
 
 export default {
-	name: "contactView",
+	name: "ContactView",
 	setup() {
-		// const form = ref(null);
 		const schema = object({
-			name: string().required("This field is required"),
+			fullname: string().required("This field is required"),
 			email: string().required("This field is required").email(),
 			message: string().required("This field is required"),
 		});
@@ -115,7 +113,7 @@ export default {
 			validationSchema: schema,
 		});
 
-		const { value: name } = useField("name");
+		const { value: fullname } = useField("fullname");
 		const { value: email } = useField("email");
 		const { value: message } = useField("message");
 
@@ -131,20 +129,11 @@ export default {
 					console.log("FAILED...", error);
 				}
 			);
-			// emailjs.send("service_dy8oq15", "template_mtc3grg", values, "LmD4BAQZ0uDvqETKL")
-			// 	.then(
-			// 	function (response) {
-			// 		console.log("SUCCESS!", response.status, response.text);
-			// 	},
-			// 	function (error) {
-			// 		console.log("FAILED...", error);
-			// 	}
-			// );
 
 		});
 
 		return {
-			name,
+			fullname,
 			email,
 			message,
 			onSubmit,

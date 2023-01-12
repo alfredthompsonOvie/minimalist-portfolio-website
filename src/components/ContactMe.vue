@@ -3,8 +3,7 @@
 		<div class="contact__contents">
 			<h2 class="subHeading">Interested in doing a project together?</h2>
 			<span class="line"></span>
-			<router-link :to="{ name: 'contactView' }" class="cta cta__sec">
-				<!-- <span class="cta__content"></span> -->
+			<router-link :to="{ name: 'ContactView' }" class="cta cta__sec">
 				Contact Me
 			</router-link>
 		</div>
@@ -25,6 +24,7 @@ export default {
 	grid-template-columns: 1fr 10fr 1fr;
 	grid-template-rows: auto;
 	margin: 7em 0 5em;
+	overflow: hidden;
 }
 .contact__contents {
 	grid-row: 1;
@@ -52,7 +52,6 @@ export default {
 		align-items: center;
 		gap: 2em;
 		margin: 6em 0;
-		/* border: 1px solid; */
 	}
 	.subHeading {
 		margin-bottom: 0;
@@ -64,8 +63,6 @@ export default {
 		width: 50%;
 		height: 2px;
 		display: inline-flex;
-		/* align-self: center; */
-		/* flex: 1; */
 	}
 	.cta__sec {
 		flex: 2;

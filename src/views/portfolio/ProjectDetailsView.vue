@@ -2,7 +2,12 @@
 	<main class="grid">
 		<section class="grid__contents">
 			<section v-for="project in projects" :key="project.hero.heading">
-				<TransitionGroup name="slide" mode="out-in">
+				<TransitionGroup
+				@before-enter="beforeEnter"
+				@enter="enter"
+				appear
+				:css="false"
+				>
 					<template v-if="id === project.hero.heading.toLowerCase()">
 						<div class="project__banner">
 							<img
@@ -105,8 +110,10 @@
 
 <script>
 import { ref } from "vue";
+import { gsap } from "gsap";
 
 export default {
+	name: "ProjectDetailsView",
 	props: ["id"],
 	// components: { TransitionGroup },
 	setup() {
@@ -206,16 +213,43 @@ export default {
 		]);
 		const imgUrl = (val) => new URL(val, import.meta.url).href;
 		const tab = ref(true);
+
+		const beforeEnter = (el) => {
+			gsap.set(el, {
+				autoAlpha: 0.01,
+				x: -30,
+			})
+		}
+
+		const enter = (el, done) => {
+			gsap.to(el, {
+				autoAlpha: 1,
+				x: 0,
+				duration: 1,
+				onComplete: done,
+			})
+		}
 		return {
 			projects,
 			imgUrl,
 			tab,
+			beforeEnter,
+			enter
 		};
 	},
 };
 </script>
 
 <style lang="scss" scoped>
+.slide-enter-from,
+.slide-leave-to {
+	opacity: 0;
+	/* transform: translateX(-100px); */
+}
+.slide-enter-active,
+.slide-leave-active {
+	transition: all 0.3s ease;
+}
 .project__contents {
 	margin: 3em 0;
 
@@ -372,15 +406,7 @@ text-align: left;
 /** --> --> --> --> --> --> --> --> --> --> --> -->  */
 /*? <-- <-- <-- <-- <-- <-- <-- <-- <-- <-- <-- <--  */
 /*! --> --> --> --> --> --> --> --> --> --> --> -->  */
-.slide-enter-from,
-.slide-leave-to {
-	opacity: 0;
-	/* transform: translateX(-100px); */
-}
-.slide-enter-active,
-.slide-leave-active {
-	transition: all 0.1s ease;
-}
+
 @media (min-width: 768px) {
   .project__info {
     display: grid;

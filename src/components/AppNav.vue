@@ -31,7 +31,7 @@
 							<router-link :to="{ name: 'portfolioView' }">Portfolio</router-link>
 						</li>
 						<li @click.prevent="showMenu = !showMenu">
-							<router-link :to="{ name: 'contactView' }">Contact Me</router-link>
+							<router-link :to="{ name: 'ContactView' }">Contact Me</router-link>
 						</li>
 					</ul>
 				</Transition>
@@ -45,7 +45,7 @@
 					<router-link :to="{ name: 'portfolioView' }">Portfolio</router-link>
 				</li>
 				<li>
-					<router-link :to="{ name: 'contactView' }">Contact Me</router-link>
+					<router-link :to="{ name: 'ContactView' }">Contact Me</router-link>
 				</li>
 			</ul>
 		</nav>

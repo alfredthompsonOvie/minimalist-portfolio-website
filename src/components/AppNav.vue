@@ -25,13 +25,13 @@
 				>
 					<ul class="mobileNav" v-if="showMenu">
 						<li @click.prevent="showMenu = !showMenu">
-							<router-link :to="{ name: 'home' }">Home</router-link>
+							<AppLink :to="{ name: 'home' }">Home</AppLink>
 						</li>
 						<li @click.prevent="showMenu = !showMenu">
-							<router-link :to="{ name: 'portfolioView' }">Portfolio</router-link>
+							<AppLink :to="{ name: 'portfolioView' }">Portfolio</AppLink>
 						</li>
 						<li @click.prevent="showMenu = !showMenu">
-							<router-link :to="{ name: 'ContactView' }">Contact Me</router-link>
+							<AppLink :to="{ name: 'ContactView' }">Contact Me</AppLink>
 						</li>
 					</ul>
 				</Transition>
@@ -39,13 +39,13 @@
 			<!-- desktop nav -->
 			<ul class="mainMenu" v-if="!mobileMenu">
 				<li>
-					<router-link :to="{ name: 'home' }">Home</router-link>
+					<AppLink :to="{ name: 'home' }">Home</AppLink>
 				</li>
 				<li>
-					<router-link :to="{ name: 'portfolioView' }">Portfolio</router-link>
+					<AppLink :to="{ name: 'portfolioView' }">Portfolio</AppLink>
 				</li>
 				<li>
-					<router-link :to="{ name: 'ContactView' }">Contact Me</router-link>
+					<AppLink :to="{ name: 'ContactView' }">Contact Me</AppLink>
 				</li>
 			</ul>
 		</nav>

@@ -4,30 +4,30 @@
 			<img src="@/assets/images/logo.svg" alt="" class="branding__footer" />
 			<ul class="nav__list">
 				<li>
-					<router-link :to="{ name: 'home' }" class="footerNav__link">Home</router-link>
+					<AppLink :to="{ name: 'home' }" class="footerNav__link">Home</AppLink>
 				</li>
 				<li>
-					<router-link :to="{ name: 'portfolioView' }" class="footerNav__link">Portfolio</router-link>
+					<AppLink :to="{ name: 'portfolioView' }" class="footerNav__link">Portfolio</AppLink>
 				</li>
 				<li>
-					<router-link :to="{ name: 'ContactView' }" class="footerNav__link">Contact Me</router-link>
+					<AppLink :to="{ name: 'ContactView' }" class="footerNav__link">Contact Me</AppLink>
 				</li>
 			</ul>
 			<ul class="social__list">
 				<li>
-					<router-link :to="{ name: '' }">
+					<AppLink to="https://github.com/alfredthompsonOvie" target="_blank">
 						<img src="@/assets/images/icons/github.svg" alt="" />
-					</router-link>
+					</AppLink>
 				</li>
 				<li>
-					<router-link :to="{ name: '' }">
+					<AppLink to="https://www.twitter.com/Eivo_official">
 						<img src="@/assets/images/icons/twitter.svg" alt="" />
-					</router-link>
+					</AppLink>
 				</li>
 				<li>
-					<router-link :to="{ name: '' }">
+					<AppLink to="https://www.linkedin.com/in/alfredthompsonovie/" target="_blank">
 						<img src="@/assets/images/icons/linkedin.svg" alt="" />
-					</router-link>
+					</AppLink>
 				</li>
 			</ul>
 		</section>

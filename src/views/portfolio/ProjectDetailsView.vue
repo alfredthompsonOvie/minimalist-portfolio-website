@@ -6,6 +6,7 @@
 				@before-enter="beforeEnter"
 				@enter="enter"
 				appear
+				mode="out-in"
 				:css="false"
 				>
 					<template v-if="id === project.hero.heading.toLowerCase()">

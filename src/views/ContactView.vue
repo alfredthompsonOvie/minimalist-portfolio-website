@@ -16,17 +16,17 @@
 					</p>
 					<ul class="social__list">
 						<li>
-					<AppLink to="https://github.com/alfredthompsonOvie">
+					<AppLink to="https://github.com/alfredthompsonOvie" class="social__link">
 						<img src="@/assets/images/icons/github.svg" alt="" />
 					</AppLink>
 				</li>
 				<li>
-					<AppLink to="https://www.twitter.com/Eivo_official">
+					<AppLink to="https://www.twitter.com/Eivo_official" class="social__link">
 						<img src="@/assets/images/icons/twitter.svg" alt="" />
 					</AppLink>
 				</li>
 				<li>
-					<AppLink to="https://www.linkedin.com/in/alfredthompsonovie/">
+					<AppLink to="https://www.linkedin.com/in/alfredthompsonovie/" class="social__link">
 						<img src="@/assets/images/icons/linkedin.svg" alt="" />
 					</AppLink>
 				</li>
@@ -160,6 +160,14 @@ section > section {
 	display: flex;
 	align-items: center;
 	gap: 1em;
+}
+.social__link {
+	img {
+		transition: all .3s linear;
+	}
+	&:hover img {
+		transform: rotate(-12deg) scale(1.2);
+	}
 }
 /*! --> --> --> --> --> --> --> --> --> --> --> -->  */
 /*? <-- <-- <-- <-- <-- <-- <-- <-- <-- <-- <-- <--  */

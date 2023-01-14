@@ -173,14 +173,13 @@ nav {
 .mainMenu {
 	display: flex;
 	gap: 1em;
-	
-
-  a {
-		color: var(--GrayishDarkBlue);
-    transition: all .3s linear;
-	}
-  a.router-link-active {
-    color: var(--SlightlyDesaturatedCyan);
-  }
+	a {
+	color: var(--GrayishDarkBlue);
+	transition: all .3s linear;
 }
+a.router-link-active {
+	color: var(--SlightlyDesaturatedCyan);
+}
+}
+
 </style>

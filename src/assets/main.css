@@ -59,7 +59,7 @@
 @supports (scrollbar-color: var(--LightGreyTextField) var(--GrayishDarkBlue)) {
 	* {
 		scrollbar-color: var(--LightGreyTextField) var(--GrayishDarkBlue);
-		scrollbar-width: auto;
+		scrollbar-width: thin;
 	}
 }
 

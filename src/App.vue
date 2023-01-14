@@ -2,7 +2,7 @@
 	<AppNav />
 
 	<RouterView v-slot="{ Component }">
-		<transition name="slide">
+		<transition name="slide" mode="out-in">
 			<component :is="Component"></component>
 		</transition>
 	</RouterView>
@@ -29,12 +29,12 @@ export default {
 <style lang="scss" scoped>
 .slide-enter-from {
 	opacity: 0;
-	transform: translateX(-100%);
+	transform: translateX(-100px);
 }
 .slide-enter-active {
 	transition: all 0.85s ease;
 } 
-.slide-leave-active {
+.slide-leave-active, .slide-move {
 	transition: all 0.25s ease;
 } 
 .slide-leave-to {
@@ -42,4 +42,5 @@ export default {
 	transform: scale(0.95);
 	transform-origin: center;
 }
+
 </style>

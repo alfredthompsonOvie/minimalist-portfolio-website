@@ -1,7 +1,7 @@
 <template>
 	<footer>
 		<section class="footer__contents">
-			<img src="@/assets/images/logo.svg" alt="" class="branding__footer" />
+			<img src="@/assets/images/logo.svg" alt="site logo" class="branding__footer" />
 			<ul class="nav__list">
 				<li>
 					<AppLink :to="{ name: 'home' }" class="footerNav__link">Home</AppLink>
@@ -15,18 +15,18 @@
 			</ul>
 			<ul class="social__list">
 				<li>
-					<AppLink to="https://github.com/alfredthompsonOvie" target="_blank">
-						<img src="@/assets/images/icons/github.svg" alt="" />
+					<AppLink to="https://github.com/alfredthompsonOvie">
+						<img src="@/assets/images/icons/github.svg" alt="link to my  github" />
 					</AppLink>
 				</li>
 				<li>
 					<AppLink to="https://www.twitter.com/Eivo_official">
-						<img src="@/assets/images/icons/twitter.svg" alt="" />
+						<img src="@/assets/images/icons/twitter.svg" alt="a link to my twitter" />
 					</AppLink>
 				</li>
 				<li>
-					<AppLink to="https://www.linkedin.com/in/alfredthompsonovie/" target="_blank">
-						<img src="@/assets/images/icons/linkedin.svg" alt="" />
+					<AppLink to="https://www.linkedin.com/in/alfredthompsonovie/">
+						<img src="@/assets/images/icons/linkedin.svg" alt="a link to my linkedin" />
 					</AppLink>
 				</li>
 			</ul>
@@ -121,6 +121,12 @@ footer {
 
 .nav__list {
   gap: 1em;
+  a {
+	transition: all .3s linear;
+}
+a.router-link-active {
+	color: var(--SlightlyDesaturatedCyan);
+}
 }
 .social__list {
   margin-left: auto;

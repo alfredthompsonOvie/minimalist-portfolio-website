@@ -16,20 +16,20 @@
 					</p>
 					<ul class="social__list">
 						<li>
-							<router-link :to="{ name: '' }">
-								<img src="@/assets/images/icons/github.svg" alt="" />
-							</router-link>
-						</li>
-						<li>
-							<router-link :to="{ name: '' }">
-								<img src="@/assets/images/icons/twitter.svg" alt="" />
-							</router-link>
-						</li>
-						<li>
-							<router-link :to="{ name: '' }">
-								<img src="@/assets/images/icons/linkedin.svg" alt="" />
-							</router-link>
-						</li>
+					<AppLink to="https://github.com/alfredthompsonOvie">
+						<img src="@/assets/images/icons/github.svg" alt="" />
+					</AppLink>
+				</li>
+				<li>
+					<AppLink to="https://www.twitter.com/Eivo_official">
+						<img src="@/assets/images/icons/twitter.svg" alt="" />
+					</AppLink>
+				</li>
+				<li>
+					<AppLink to="https://www.linkedin.com/in/alfredthompsonovie/">
+						<img src="@/assets/images/icons/linkedin.svg" alt="" />
+					</AppLink>
+				</li>
 					</ul>
 				</div>
 			</section>

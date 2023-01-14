@@ -1,32 +1,29 @@
 <template>
-	<main>
+	<main role="main" >
 		<section class="hero grid">
 			<div class="hero__contents grid__contents">
 				<div class="hero__illustration">
 					<img
-						src="@/assets/images/homepage/mobile/image-homepage-hero@2x.jpg"
-						alt=""
-						v-if="mobileNav"
+						src="@/assets/images/homepage/tablet/image-homepage-hero@2x.jpg"
+						alt="an image of manage website viewed from a desktop"
+						v-if="mobile"
 					/>
 					<img
 						src="@/assets/images/homepage/desktop/image-homepage-hero@2x.jpg"
-						alt=""
-						v-if="!mobileNav"
+						alt="an image of manage website viewed from a desktop"
+						v-if="desktop"
 					/>
+					<!-- <picture>
+						<source media="(min-width: 465px)" srcset="@/assets/images/homepage/mobile/image-homepage-hero@2x.jpg" />
+						<source media="(min-width: 760px)" srcset="@/assets/images/homepage/tablet/image-homepage-hero@2x.jpg" />
+						<img src="@/assets/images/homepage/desktop/image-homepage-hero@2x.jpg" alt="an image of manage website viewed from a desktop"/>
+					</picture> -->
 				</div>
 				<div class="hero__content hero__details">
 					<h1 class="heading">
 						Hey, I’m Alfred Thompson Ovie and I love building beautiful websites
 					</h1>
 
-					<!-- <button  
-					@click.prevent="scrollToAnchorPoint('about')"
-					class="cta cta__primary">
-						<span class="cta__icon"
-							><img src="@/assets/images/icons/down-arrows.svg" alt=""
-						/></span>
-						<span class="cta__content">About Me</span>
-					</button> -->
 					<router-link class="cta cta__primary" to="#about">
 						<span class="cta__icon"
 							><img src="@/assets/images/icons/down-arrows.svg" alt=""
@@ -40,16 +37,11 @@
 		<section class="about grid" ref="about" id="about">
 			<div class="grid__contents about__contents">
 				<div class="about__illustration">
-					<img
-						src="@/assets/images/homepage/mobile/image-homepage-profile@2x.jpg"
-						alt=""
-						v-if="mobileNav"
-					/>
-					<img
-						src="@/assets/images/homepage/desktop/image-homepage-profile@2x.jpg"
-						alt=""
-						v-if="!mobileNav"
-					/>
+					<picture>
+						<source media="(min-width: 465px)" srcset="@/assets/images/homepage/mobile/image-homepage-profile@2x.jpg" />
+						<source media="(min-width: 760px)" srcset="@/assets/images/homepage/tablet/image-homepage-profile@2x.jpg" />
+						<img src="@/assets/images/homepage/desktop/image-homepage-profile@2x.jpg" alt="profile picture"/>
+					</picture>
 				</div>
 				<div class="about__content about__details">
 					<h1 class="subHeading">About Me</h1>
@@ -65,12 +57,7 @@
 					</p>
 
 					<router-link :to="{ name: 'portfolioView' }" class="cta cta__sec">
-						<!-- <span class="cta__content">Go to Portfolio</span> -->
 						Go to Portfolio
-						<div class="border__top"></div>
-						<div class="border__right"></div>
-						<div class="border__bottom"></div>
-						<div class="border__left"></div>
 					</router-link>
 				</div>
 			</div>
@@ -91,27 +78,20 @@ export default {
 	setup() {
 		const about = ref(null);
 
-		// const scrollToAnchorPoint = (section) => {
-		//   console.log(section);
-		//   section.scrollIntoView({behavior: 'smooth'})
-		// }
-
-		// const showMenu = ref(false);
-		// const mobileMenu = ref(null);
-		const mobileNav = ref(null);
+		const mobile = ref(null);
+		const desktop = ref(null);
 		const windowWidth = ref(null);
 
 		const checkScreen = () => {
 			windowWidth.value = window.innerWidth;
-			if (windowWidth.value < 760) {
-				mobileNav.value = true;
-				// mobileMenu.value = true;
+			if (windowWidth.value < 992) {
+				mobile.value = true;
+				desktop.value = false;
 				return;
 			}
 
-			mobileNav.value = false;
-			// mobileMenu.value = false;
-			// showMenu.value = false;
+			mobile.value = false;
+			desktop.value = true;
 			return;
 		};
 
@@ -122,8 +102,8 @@ export default {
 
 		return {
 			about,
-			mobileNav,
-			// scrollToAnchorPoint,
+			mobile,
+			desktop,
 		};
 	},
 };
@@ -131,11 +111,17 @@ export default {
 
 <style lang="scss" scoped>
 .hero__contents {
-	/* border: 1px solid; */
 	margin-top: 0.5em;
 }
 .hero__illustration {
 	text-align: center;
+	/* img {
+		width: 100%;
+		object-fit: contain;
+		object-fit: cover;
+		object-fit: ;
+		object-position: 0 0;
+	} */
 }
 .hero__content {
 	padding: 1em 0;
@@ -181,9 +167,6 @@ export default {
 	flex-direction: column;
 	padding: 1.5em 0;
 }
-.subHeading {
-	/* margin: 0.5em 0; */
-}
 .description {
 	padding: 1em 0 1.2em;
 }
@@ -227,17 +210,19 @@ export default {
 	.about__contents {
 		display: grid;
 		grid-template-columns: 0.8fr 1.2fr;
-		/* grid-template-rows: 80vh;
-		grid-template-rows: 100vh; */
 		grid-template-rows: auto;
+		grid-template-rows: 98vh; 
+		justify-content: start;
 		grid-gap: 3em;
 	}
 	.about__illustration {
 		grid-column: 1;
 		grid-row: 1;
 		margin: 0;
+		text-align: left;
 
 		img {
+			width: 100%;
 			height: 100%;
 			object-fit: cover;
 			object-position: right;
@@ -267,9 +252,6 @@ export default {
 }
 
 @media (min-width: 992px) {
-	.hero__content {
-		/* max-width: 550px; */
-	}
 	.hero__content h1 {
 		font-size: clamp(25px, 4vw, 40px);
 	}
@@ -282,15 +264,13 @@ export default {
 		grid-template-columns: 1fr 1fr;
 		grid-gap: 4.5em;
 	}
-	.about__illustration img {
-		width: 100%;
-		object-fit: cover;
-		object-fit: initial;
-		object-fit: contain;
-		object-fit: scale-down;
-		object-fit: fill;
-		object-position: center;
-		object-position: 0 0;
+	.about__illustration {
+		text-align: center;
+
+		img {
+			object-position: center;
+		}
+
 	}
 }
 @media (min-width: 1300px) {

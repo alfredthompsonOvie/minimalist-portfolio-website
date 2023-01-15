@@ -37,14 +37,14 @@
 		<section class="about grid" ref="about" id="about">
 			<div class="grid__contents about__contents">
 				<div class="about__illustration">
-					<picture>
+					<picture class="avatar--js">
 						<source media="(min-width: 465px)" srcset="@/assets/images/homepage/mobile/image-homepage-profile@2x.jpg" />
 						<source media="(min-width: 760px)" srcset="@/assets/images/homepage/tablet/image-homepage-profile@2x.jpg" />
 						<img src="@/assets/images/homepage/desktop/image-homepage-profile@2x.jpg" alt="profile picture"/>
 					</picture>
 				</div>
 				<div class="about__content about__details">
-					<h1 class="subHeading">About Me</h1>
+					<h1 class="subHeading subHeading--js">About Me</h1>
 					<p class="description">
 						I’m a junior front-end developer looking for a new role in an
 						exciting company. I focus on writing accessible HTML, using modern
@@ -70,7 +70,10 @@
 <script>
 import ContactMe from "../components/ContactMe.vue";
 import { ref, onMounted } from "vue";
+// import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// gsap.registerPlugin(ScrollTrigger);
 export default {
 	components: {
 		ContactMe,
@@ -115,13 +118,6 @@ export default {
 }
 .hero__illustration {
 	text-align: center;
-	/* img {
-		width: 100%;
-		object-fit: contain;
-		object-fit: cover;
-		object-fit: ;
-		object-position: 0 0;
-	} */
 }
 .hero__content {
 	padding: 1em 0;

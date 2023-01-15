@@ -49,7 +49,7 @@
 									placeholder="Jane Appleseed"
 									v-model="fullname"
 									class="form__control"
-									:class="{ addBorder: errors.fullname }"
+									:class="{ addBorder: errors.fullname, success: !errors.fullname }"
 								/>
 								<p v-if="errors" class="error">{{ errors.fullname }}</p>
 							</div>
@@ -61,7 +61,7 @@
 									placeholder="email@example.com"
 									v-model="email"
 									class="form__control"
-									:class="{ addBorder: errors.email }"
+									:class="{ addBorder: errors.email, success: !errors.email }"
 								/>
 								<p v-if="errors" class="error">{{ errors.email }}</p>
 							</div>
@@ -75,7 +75,7 @@
 									rows="10"
 									placeholder="How can I help?"
 									class="form__control"
-									:class="{ addBorder: errors.message }"
+									:class="{ addBorder: errors.message, success: !errors.message }"
 								></textarea>
 								<p v-if="errors" class="error">{{ errors.message }}</p>
 							</div>
@@ -99,17 +99,21 @@ import { useField, useForm } from "vee-validate";
 import { object, string } from "yup";
 
 import emailjs from '@emailjs/browser';
+import { ref } from "vue";
+import { useRouter } from "vue-router"
 
 export default {
 	name: "ContactView",
 	setup() {
+		const isSubmitting = ref(false);
+		const router = useRouter()
 		const schema = object({
 			fullname: string().required("This field is required"),
 			email: string().required("This field is required").email(),
 			message: string().required("This field is required"),
 		});
 
-		const { handleSubmit, errors, isSubmitting } = useForm({
+		const { handleSubmit, errors } = useForm({
 			validationSchema: schema,
 		});
 
@@ -119,14 +123,17 @@ export default {
 
 		const onSubmit = handleSubmit((values) => {
 			console.log(values);
-
+			isSubmitting.value = true;
 			emailjs.send("service_dy8oq15", "contact_form", values, "LmD4BAQZ0uDvqETKL")
 				.then(
 				function (response) {
-					console.log("SUCCESS!", response.status, response.text);
+						console.log("SUCCESS!", response.status, response.text);
+						isSubmitting.value = false;
+						router.push({ name: "about" });
 				},
 				function (error) {
 					console.log("FAILED...", error);
+					isSubmitting.value = false;
 				}
 			);
 
@@ -193,19 +200,14 @@ label {
 	line-height: 30px;
 }
 .form__control {
-	--GrayishDarkBlue-border: hsla(245, 10%, 22%, 0.15);
-	--GrayishDarkBlue: hsl(245, 10%, 22%);
-	--DarkBlue: hsl(206, 41%, 21%);
-	--SlightlyDesaturatedCyan: hsl(167, 36%, 54%);
-	/* secondary */
-	--BrightRedErrors: hsl(0, 90%, 57%);
-	--LightGreyTextField: hsl(240, 2%, 92%);
-	--VeryLightGreyBG: hsl(0, 0%, 98%);
 	display: inline-block;
 	width: 100%;
 	padding: 1em 1.5em;
 	background-color: var(--LightGreyTextField);
 	border: 0;
+}
+.success {
+	border: 1px solid var(--SlightlyDesaturatedCyan);
 }
 
 input[type="submit"] {
@@ -222,8 +224,11 @@ input[type="submit"] {
 	letter-spacing: 2px;
 	text-align: center;
 	cursor: pointer;
+	transition: all .3s linear;
 }
-
+input[type="submit"]:hover {
+	background-color: var(--SlightlyDesaturatedCyan);
+}
 .error {
 	color: var(--BrightRedErrors);
 	font-style: italic;
@@ -233,7 +238,6 @@ input[type="submit"] {
 	border: 1px solid var(--BrightRedErrors);
 }
 input[disabled] {
-	/* background-color: #000; */
 	cursor: not-allowed;
 }
 

@@ -17,17 +17,17 @@
 					<ul class="social__list">
 						<li>
 					<AppLink to="https://github.com/alfredthompsonOvie" class="social__link">
-						<img src="@/assets/images/icons/github.svg" alt="" />
+						<img src="@/assets/images/icons/github.svg" alt="a link to my github page" />
 					</AppLink>
 				</li>
 				<li>
 					<AppLink to="https://www.twitter.com/Eivo_official" class="social__link">
-						<img src="@/assets/images/icons/twitter.svg" alt="" />
+						<img src="@/assets/images/icons/twitter.svg" alt="a link to my twitter page" />
 					</AppLink>
 				</li>
 				<li>
 					<AppLink to="https://www.linkedin.com/in/alfredthompsonovie/" class="social__link">
-						<img src="@/assets/images/icons/linkedin.svg" alt="" />
+						<img src="@/assets/images/icons/linkedin.svg" alt="a link to my linkedin page" />
 					</AppLink>
 				</li>
 					</ul>
@@ -46,6 +46,7 @@
 								<input
 									type="text"
 									name="fullname"
+									id="fullname"
 									placeholder="Jane Appleseed"
 									v-model="fullname"
 									class="form__control"
@@ -58,6 +59,7 @@
 								<input
 									type="email"
 									name="email"
+									id="email"
 									placeholder="email@example.com"
 									v-model="email"
 									class="form__control"

@@ -21,7 +21,7 @@
 				</div>
 				<div class="hero__content hero__details">
 					<h1 class="heading">
-						Hey, I’m Alfred Thompson Ovie and I love building beautiful websites
+						Hey, I’m Alex Spencer and I love building beautiful websites
 					</h1>
 
 					<router-link class="cta cta__primary" to="#about">

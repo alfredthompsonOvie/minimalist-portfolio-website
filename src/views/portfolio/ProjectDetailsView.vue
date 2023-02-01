@@ -56,13 +56,13 @@
 										:src="`${imgUrl('../../assets/images/detail/desktop/')}${
 											project.background.previewImage_one
 										}`"
-										:alt="`${project.hero.heading} site preview`"
+										:alt="`${project.hero.heading} desktop site preview`"
 									/>
 									<img
 										:src="`${imgUrl('../../assets/images/detail/desktop/')}${
 											project.background.previewImage_two
 										}`"
-										:alt="`${project.hero.heading} site preview`"
+										:alt="`${project.hero.heading} mobile site preview`"
 									/>
 								</div>
 							</div>
@@ -135,7 +135,7 @@ export default {
 						"HTML / CSS / JS",
 					],
 					linkContent: "Visit Website",
-					linkUrl: "https://",
+					linkUrl: "https://ov7-manage-landing-page.netlify.app/",
 				},
 				background: {
 					heading: "Project Background",
@@ -159,7 +159,7 @@ export default {
 						"HTML / CSS / JS",
 					],
 					linkContent: "Visit Website",
-					linkUrl: "https://",
+					linkUrl: "https://ov7-bookmark-landing-page.netlify.app/",
 				},
 				background: {
 					heading: "Project Background",
@@ -183,7 +183,7 @@ export default {
 						"HTML / CSS / JS",
 					],
 					linkContent: "Visit Website",
-					linkUrl: "https://",
+					linkUrl: "https://ov7-insure-landing-page.netlify.app/",
 				},
 				background: {
 					heading: "Project Background",
@@ -207,7 +207,7 @@ export default {
 						"HTML / CSS",
 					],
 					linkContent: "Visit Website",
-					linkUrl: "https://",
+					linkUrl: "https://ov7-fylo-landing-page.netlify.app/",
 				},
 				background: {
 					heading: "Project Background",
